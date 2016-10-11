@@ -2,8 +2,9 @@ FROM registry.access.redhat.com/rhel7:latest
 
 MAINTAINER NGINX Docker Maintainers "docker-maint@nginx.com"
 
-RUN yum install epel-release && \
-	yum install -y nginx && \
+COPY nginx.repo /etc/yum.repos.d/nginx.repo
+
+RUN yum install -y nginx && \
 	rpm -V nginx && \
 	yum clean all
 
